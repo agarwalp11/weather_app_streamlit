@@ -30,24 +30,33 @@ def get_weather(city):
     # 4. Parse JSON
     data = response.json()
     
-    # 5. Extract key info
-    city_name = data["name"]
-    temp = data["main"]["temp"]
-    humidity = data['main']['humidity']
-    description = data["weather"][0]["description"]
-    feels_like = data["main"]["feels_like"]
+    # 5. Extract key info and return
     
-    # 6. Print
-    print(f"In {city_name}, it is {temp}°C and {humidity}% humidity with {description}.")
-    print(f"The feels like temp is {feels_like}°C.")
+    if response.status_code == 200:
+        city_name = data["name"]
+        temp = data["main"]["temp"]
+        humidity = data["main"]["humidity"]
+        description = data["weather"][0]["description"]
+        feels_like = data["main"]["feels_like"]
 
-def main():
-    # ask user for city
-    city = input("Enter city: ")
+        return city_name, temp, humidity, description, feels_like
 
-    #call get_weather function
-    get_weather(city)
+    else:
+        return None
 
-# Try it
-if __name__ == "__main__":
-    main()
+    # print(f"In {city_name}, it is {temp}°C and {humidity}% humidity with {description}.")
+    # print(f"The feels like temp is {feels_like}°C.")
+
+
+#* For learning, the below is used in terminal. This next interation, we will be using streamlit so its not necessary
+
+# def main():
+#     # ask user for city
+#     city = input("Enter city: ")
+
+#     #call get_weather function
+#     get_weather(city)
+
+# # Try it
+# if __name__ == "__main__":
+#     main()
