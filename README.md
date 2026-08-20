@@ -87,9 +87,13 @@ streamlit run app.py
 
 Streamlit will open the weather app in your web browser.
 
+## App Preview
+
+![Weather App Screenshot](images/weather_app_screenshot.png)
+
 ## Technologies Used
 
-- Python
+- Python 3.10.0
 - Streamlit
 - Pandas
 - Requests
