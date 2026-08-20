@@ -1,10 +1,16 @@
 import requests
 import os
 from dotenv import load_dotenv
+import streamlit as st
 
 # Load your API key from .env file
 load_dotenv()
-API_KEY = os.getenv("OPENWEATHER_API_KEY")
+# Try Streamlit secrets first when deployed
+# Otherwise use the local .env file
+try:
+    API_KEY = st.secrets["OPENWEATHER_API_KEY"]
+except:
+    API_KEY = os.getenv("OPENWEATHER_API_KEY")
 
 def get_weather(city):
     """
